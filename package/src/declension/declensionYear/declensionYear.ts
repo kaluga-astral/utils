@@ -1,7 +1,7 @@
-import { declensionOfWords } from '../base';
+import { declensionOfWords } from '../declensionOfWords';
 
 /**
- * Функцию, которая возвращает слова "год" в зависимости от входного числа со склонением.
+ * Функцию, которая возвращает слово "год" в зависимости от входного числа со склонением.
  * @param {number} number Количество лет
  * @returns {string} Склоненное число лет.
  * 

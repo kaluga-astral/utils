@@ -13,6 +13,11 @@ Table of contents
   - [addMonths](#addmonths)
   - [addYears](#addyears)
   - [isDate](#isdate)
+- [declension](#declension)
+  - [declensionOfWords](#declensionofwords)
+  - [declensionDay](#declensionday)
+  - [declensionMonth](#declensionmonth)
+  - [declensionYear](#declensionyear)
 - [phone](#phone)
   - [formatPhoneToView](#formatphonetoview)
 
@@ -131,6 +136,84 @@ isDate(null);
 
 // false
 isDate('some string');
+
+```
+
+---
+
+# declension
+
+Утилиты и функции для работы со склонениями слов
+
+## declensionOfWords
+
+Базовая утилита для работы со склонениями
+
+```ts
+import { declensionOfWords } from '@astral/utils';
+
+// Возвращает функцию для склонения слова 'документ'
+const declensionDocument = declensionOfWords(['документ', 'документа', 'документов']);
+
+```
+
+---
+
+## declensionDay
+
+Утилита для склонения дней
+
+```ts
+import { declensionDay } from '@astral/utils';
+
+// вернет 'день'
+declensionDay(1); 
+
+// вернет 'дня'
+declensionDay(2); 
+
+// вернет 'дней'
+declensionDay(5); 
+
+```
+
+---
+
+## declensionMonth
+
+Утилита для склонения месяцев
+
+```ts
+import { declensionMonth } from '@astral/utils';
+
+// вернет 'месяц'
+declensionMonth(1); 
+
+// вернет 'месяца'
+declensionMonth(2); 
+
+// вернет 'месяцев'
+declensionMonth(5); 
+
+```
+
+---
+
+## declensionYear
+
+Утилита для склонения лет
+
+```ts
+import { declensionYear } from '@astral/utils';
+
+// вернет 'год'
+declensionYear(1); 
+
+// вернет 'года'
+declensionYear(2); 
+
+// вернет 'лет'
+declensionYear(5); 
 
 ```
 

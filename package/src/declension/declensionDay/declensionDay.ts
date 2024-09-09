@@ -1,7 +1,7 @@
-import { declensionOfWords } from '../base';
+import { declensionOfWords } from '../declensionOfWords';
 
 /**
- * Функцию, которая возвращает слова "день" в зависимости от входного числа со склонением.
+ * Функцию, которая возвращает слово "день" в зависимости от входного числа со склонением.
  * @param {number} number Количество дней
  * @returns {string} Склоненное число дней.
  * 

@@ -1,7 +1,7 @@
-import { declensionOfWords } from '../base';
+import { declensionOfWords } from '../declensionOfWords';
 
 /**
- * Функцию, которая возвращает слова "месяц" в зависимости от входного числа со склонением.
+ * Функцию, которая возвращает слово "месяц" в зависимости от входного числа со склонением.
  * @param {number} number Количество месяцев
  * @returns {string} Склоненное число месяцев.
  * 
