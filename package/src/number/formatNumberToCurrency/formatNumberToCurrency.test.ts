@@ -28,6 +28,19 @@ describe('formatNumberToCurrency', () => {
     },
   );
 
+  it('Вернётся кастомный текст, если переданное число - это 0', () => {
+    const value = 0;
+    const expectedPlaceholderMessage = 'Даром';
+
+    const result = formatNumberToCurrency({
+      amount: value,
+      isTextInsteadOfZeroFormat: true,
+      zeroSumPlaceholder: 'Даром',
+    });
+
+    expect(result).toEqual(expectedPlaceholderMessage);
+  });
+
   it('Вернётся отформатированное значение, если amount передан в качестве строки', () => {
     const value = '100';
     const expectedCurrencyFormat = '100\u00A0₽';
@@ -63,9 +76,9 @@ describe('formatNumberToCurrency', () => {
   });
 
   it.each(incorrectCases)(
-    'Вернется текст "Некорректное значение", если передано %s',
+    'В консоли появится сообщение о неподходящем формате переданных данных, если передано %s',
     (value) => {
-      const result = formatNumberToCurrency({
+      formatNumberToCurrency({
         // @ts-expect-error Здесь используется ts-ignore для проверки того, что в случае возникновения проблем в рантайме, мы не столкнемся с неожиданным поведением
         amount: value,
         isTextInsteadOfZeroFormat: true,
@@ -74,8 +87,15 @@ describe('formatNumberToCurrency', () => {
       expect(consoleMock).toHaveBeenLastCalledWith(
         'formatNumberToCurrency: значение должно быть безопасным целым числом',
       );
-
-      expect(result).toBe('Некорректное значение');
     },
   );
+
+  it.each(incorrectCases)('Вернется undefined, если передано %s', (value) => {
+    const result = formatNumberToCurrency({
+      // @ts-expect-error Здесь используется ts-ignore для проверки того, что в случае возникновения проблем в рантайме, мы не столкнемся с неожиданным поведением
+      amount: value,
+    });
+
+    expect(result).toBeUndefined();
+  });
 });

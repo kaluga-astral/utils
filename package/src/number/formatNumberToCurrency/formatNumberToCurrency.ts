@@ -8,15 +8,15 @@ type FormatNumberToCurrencyParams = {
 /**
  * Форматирует число в формат валюты.
  *
- * **Параметры**
+ * @param params - Параметры для форматирования.
  *
- * - `amount: number | string` — Сумма в числовом или строковом формате.
+ * @param params.amount - Сумма в числовом или строковом формате.
  *
- * - `currencyCode: string` — Код валюты в формате [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217#List_of_ISO_4217_currency_codes).
+ * @param params.currencyCode - Код валюты в формате [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217#List_of_ISO_4217_currency_codes).
  *
- * - `isTextInsteadOfZeroFormat?: boolean` — Флаг для замены отображения "0 ₽" на текст. По умолчанию "Бесплатно".
+ * @param params.isTextInsteadOfZeroFormat - Флаг для замены отображения "0 ₽" на текст. По умолчанию "Бесплатно".
  *
- * - `zeroSumPlaceholder?: string = "Бесплатно"` — Текст, который должен отображаться, если сумма равна "0". По умолчанию "Бесплатно".
+ * @param params.zeroSumPlaceholder - Текст, который должен отображаться, если сумма равна "0". По умолчанию "Бесплатно".
  *
  * @example
  * formatCurrency({ amount: 1000 }); // "1 000 ₽"
@@ -30,7 +30,7 @@ export const formatNumberToCurrency = (
 ) => {
   const {
     amount,
-    isTextInsteadOfZeroFormat = false,
+    isTextInsteadOfZeroFormat,
     currencyCode = 'RUB',
     zeroSumPlaceholder = 'Бесплатно',
   } = params;
@@ -45,7 +45,7 @@ export const formatNumberToCurrency = (
       'formatNumberToCurrency: значение должно быть безопасным целым числом',
     );
 
-    return 'Некорректное значение';
+    return;
   }
 
   const formatter = new Intl.NumberFormat('ru-RU', {
