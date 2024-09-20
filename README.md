@@ -20,7 +20,8 @@ Table of contents
   - [declensionYear](#declensionyear)
 - [phone](#phone)
   - [formatPhoneToView](#formatphonetoview)
-
+- [number](#number)
+  - [formatNumberToCurrency](#formatNumberToCurrency)
 ---
 
 # Installation
@@ -242,6 +243,42 @@ formatPhoneToView('79999999999',{
 
 // undefined
 formatPhoneToView();
+```
+
+---
+
+# number
+
+Утилиты и функции для работы с числами 
+
+## formatNumberToCurrency
+
+Форматирование чисел или строк в формат валюты
+
+```ts 
+import { formatNumberToCurrency } from '@astral/utils';
+
+// "10 000 ₽"
+formatNumberToCurrency({ amount: '10000' });
+
+// "100 ₽"
+formatNumberToCurrency({ amount: 100 });
+
+// "0 ₽"
+formatNumberToCurrency({ amount: 0 });
+
+// "Бесплатно"
+formatNumberToCurrency({
+  amount: 0,
+  isTextInsteadOfZeroFormat: true,
+});
+
+// "Даром"
+formatNumberToCurrency({
+  amount: 0,
+  isTextInsteadOfZeroFormat: true,
+  zeroSumPlaceholder: "Даром",
+});
 ```
 
 ---
